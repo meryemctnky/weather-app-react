@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import TurkeyMap from "turkey-map-react";
-import CurrentWeather from "./CurrentWeather";
 import { useWeather } from "../contexts/WeatherContext";
 import Modal from "react-bootstrap/Modal";
 

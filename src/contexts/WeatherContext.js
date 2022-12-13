@@ -26,7 +26,7 @@ export const WeatherProvider = (props) => {
     const { speed } = data.wind;
     const { country } = data.sys;
     const { all: cloudiness } = data.clouds;
-    const { coord: coord } = data; 
+    const { coord: coordinat } = data; 
 
     const myNewWeather = {
       temp,
@@ -38,7 +38,7 @@ export const WeatherProvider = (props) => {
       speed,
       country,
       cloudiness,
-      coord
+      coordinat
     };  
     // Update state with weather data
     setWeather(myNewWeather);
@@ -51,7 +51,7 @@ export const WeatherProvider = (props) => {
     // Fetch weather data from API
     try {
       let resForecast = await fetch(
-      `${WEATHER_API_URL}/forecast?lat=${weather.coord.lat ? weather.coord.lat : null }&lon=${weather.coord.lon ? weather.coord.lon : null}&appid=${WEATHER_API_KEY}&units=metric`
+      `${WEATHER_API_URL}/forecast?lat=${weather.coordinat.lat ? weather.coordinat.lat : null }&lon=${weather.coord.lon ? weather.coord.lon : null}&appid=${WEATHER_API_KEY}&units=metric`
     );
 
     let dataForecast = await resForecast.json();
@@ -63,7 +63,7 @@ export const WeatherProvider = (props) => {
 
   useEffect(() => {
     forecastFetch()
-  }, [weather])
+  }, [])
 
 const days = [
   "Sunday",

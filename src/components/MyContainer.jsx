@@ -1,11 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useWeather } from "../contexts/WeatherContext";
 import Search from "./Search";
 import CurrentWeather from "./CurrentWeather";
 import WeatherDetail from "./WeatherDetail";
 import WeatherForecast from "./WeatherForecast";
 import Map from './Map';
-import { useState, useEffect } from 'react';
 
 const MyContainer = () => {
     const { weather, forecast } = useWeather();
