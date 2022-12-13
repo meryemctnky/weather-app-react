@@ -30,10 +30,10 @@ const Search = ({setShowMap}) => {
       <div className="col-7 ">
         <form className="input-group mb-2" onSubmit={handleSubmit}>
           <input type="text" className="form-control" value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Search city..." />
-          <button className="btn btn-secondary me-1" type="submit">
+          <button className="btn btn-custom me-1" type="submit">
             <FaSearch />
           </button>
-          <button className="btn btn-secondary rounded-0" type="submit" onClick={showMapHandle} >
+          <button className="btn btn-custom rounded-0" type="submit" onClick={showMapHandle} >
             <FaMapMarkerAlt />
           </button>
         </form>
