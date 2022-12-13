@@ -3,14 +3,11 @@ import { useWeather } from "../contexts/WeatherContext";
 
 const WeatherForecast = () => {
   const { forecast, days } = useWeather();
-
+  
+  if (forecast) {
   const weekDays = forecast.slice(0, 6);
   const currentDay = new Date().getDay();
-
-  const forecastDays = days
-    .slice(currentDay + 1, days.length)
-    .concat(days.slice(0, currentDay));
-  
+  const forecastDays = days.slice(currentDay + 1, days.length).concat(days.slice(0, currentDay));
 
   return (
     <div className="mt-4">
@@ -23,10 +20,12 @@ const WeatherForecast = () => {
             <h6 className="fw-bold">{Math.round(item.main.temp)}<sup>o</sup>C</h6>
           </li>
          ))}
-        </ul>
+        </ul> 
       </div>
     </div>
   );
+}
+
 }
 
 export default WeatherForecast;

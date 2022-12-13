@@ -1,21 +1,21 @@
-import React, {useState} from "react";
+import React, {useState } from "react";
 import { FaSearch, FaMapMarkerAlt } from "react-icons/fa";
 import { useWeather } from "../contexts/WeatherContext";
 
 const Search = ({setShowMap}) => {
   const { getCurrentWeather } = useWeather();
   const [search, setSearch] = useState("");
-
+  
+  let searchValue = search.trim();
     // Handle form submission
     const handleSubmit = (event) => {
       event.preventDefault();
 
-    const location = search.trim();
 
-    if (!location) {
+    if (!searchValue) {
       console.log("hataaaaa")
     }
-    getCurrentWeather(location);
+    getCurrentWeather(searchValue);
     setSearch("");
     }
 

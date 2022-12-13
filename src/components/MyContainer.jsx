@@ -7,7 +7,7 @@ import WeatherForecast from "./WeatherForecast";
 import Map from './Map';
 
 const MyContainer = () => {
-    const { weather, forecast } = useWeather();
+    const { weather } = useWeather();
     const  [showMap, setShowMap ] = useState(false)
 
 
@@ -19,7 +19,7 @@ const MyContainer = () => {
       </h2>
     </header>
     <Search setShowMap={setShowMap}/>
-     {weather && forecast && !showMap && (
+     {weather && !showMap && (
       <section className="section">
         <div className="row">
           <div className="col-6 d-flex justify-content-end align-items-center">

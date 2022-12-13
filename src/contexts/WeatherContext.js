@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState, } from "react";
+import { createContext, useContext, useEffect, useState, useCallback } from "react";
 import { WEATHER_API_URL, WEATHER_API_KEY } from "../services/api";
 
 export const WeatherContext = createContext();
@@ -10,15 +10,16 @@ export const WeatherProvider = (props) => {
   const [forecast, setForecast] = useState(null);
 
 
-  const getCurrentWeather = async (location) => {
+  const getCurrentWeather = async (searchValue) => {
     try {
       let response = await fetch(
-      `${WEATHER_API_URL}/weather?q=${location}&appid=${WEATHER_API_KEY}&units=metric`
+      `${WEATHER_API_URL}/weather?q=${searchValue}&appid=${WEATHER_API_KEY}&units=metric`
     )
     if (!response.ok) {
       throw new Error("Something went wrong!");
     }
     let data = await response.json();  
+
     const { temp, humidity, pressure } = data.main;
     const { description: weatherType } = data.weather[0];
     const { icon: weatherIcon } = data.weather[0];
@@ -47,23 +48,28 @@ export const WeatherProvider = (props) => {
   }
   };
 
-  const forecastFetch = async () => {
+  const forecastFetch = useCallback( async() => {
     // Fetch weather data from API
     try {
       let resForecast = await fetch(
-      `${WEATHER_API_URL}/forecast?lat=${weather.coordinat.lat ? weather.coordinat.lat : null }&lon=${weather.coord.lon ? weather.coord.lon : null}&appid=${WEATHER_API_KEY}&units=metric`
+      `${WEATHER_API_URL}/forecast?lat=${weather.coordinat.lat}&lon=${weather.coordinat.lon}&appid=${WEATHER_API_KEY}&units=metric`
     );
+
+    if (!resForecast.ok) {
+      throw new Error("Something went wrong!");
+    }
 
     let dataForecast = await resForecast.json();
     setForecast(dataForecast.list);
   } catch (error) {
     return error.response;
   }
-  };
+}, [weather])
 
   useEffect(() => {
     forecastFetch()
-  }, [])
+  },[forecastFetch])
+
 
 const days = [
   "Sunday",
@@ -74,6 +80,8 @@ const days = [
   "Friday",
   "Saturday",
 ];
+
+
 
 
 return (
@@ -92,19 +100,6 @@ return (
     </WeatherContext.Provider>
   );
 };
-
-
-
-
-
-
-// function getLocation() {
-//   if (navigator.geolocation) {
-//     navigator.geolocation.getCurrentPosition((position) => {});
-//   } else { 
-//    console.log("Geolocation is not supported by this browser.")
-//   }
-// }
 
 
 
