@@ -1,4 +1,5 @@
 @import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:200,300,400,700);
 $headings-font-family:Open Sans;
@@ -51,15 +52,7 @@ $theme-colors: (
     
   }
 
-  .btn-custom, .btn-custom:hover {
-    background-color: #5661b9;
-    color: white;
-  }
-  
-  
-  
-  // Required
-  @import "../../node_modules/bootstrap/scss/variables";
-  @import "../../node_modules/bootstrap/scss/mixins";
+
+  @import "../../node_modules/bootstrap/scss/bootstrap";
 
 
