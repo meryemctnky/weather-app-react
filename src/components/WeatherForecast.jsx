@@ -10,13 +10,13 @@ const WeatherForecast = () => {
   const forecastDays = days.slice(currentDay + 1, days.length).concat(days.slice(0, currentDay));
 
   return (
-    <div className="mt-4">
-      <div className="card rounded-3 weather-data py-2" style={{ width: "750px" }}>
-        <ul className="list-inline text-white d-flex justify-content-between w-100">
+    <div className="mt-4 mb-3">
+      <div className="card rounded-3 weather-data py-2 text-center">
+        <ul className="list-inline d-xs-inline-block text-white">
         {weekDays.map((item, index) => (
-          <li className="list-inline-item px-3 border-end text-center" key={index}>
+          <li className="list-inline-item px-3 py-xs-4" key={index}>
             <p className="text-uppercase">{forecastDays[index]}</p>
-            <img src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`} className="py-2" style={{height:"100px"}} alt="weather" />
+            <img src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`} className="py-2" alt="weather" />
             <h6 className="fw-bold">{Math.round(item.main.temp)}<sup>o</sup>C</h6>
           </li>
          ))}

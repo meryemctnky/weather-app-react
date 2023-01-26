@@ -27,7 +27,7 @@ const Search = ({setShowMap}) => {
   return (
     <div className="container">
     <div className="row d-flex justify-content-center mb-3">
-      <div className="col-7 ">
+      <div className="col-md-7 ">
         <form className="input-group mb-2" onSubmit={handleSubmit}>
           <input type="text" className="form-control" value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Search city..." />
           <button className="btn btn-secondary me-1" type="submit">

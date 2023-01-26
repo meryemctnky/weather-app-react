@@ -29,8 +29,8 @@ const MyContainer = () => {
             <WeatherDetail />
           </div>
         </div>
-        <div className="row">
-          <div className="col d-flex justify-content-center">
+        <div className="row d-flex justify-content-center">
+          <div className="col-md-8">
             <WeatherForecast />
           </div>
         </div>
